@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/MainLayout.astro";
+import { BRAND } from "../../branding";
+
+const title = BRAND + " - Blog";
+const posts = await getCollection("posts");
+posts.sort((a,b) => a.data.date < b.data.date ? 1 : -1)
+---
+
+<Layout title={title}>
+    <h2>Blog Posts</h2>
+    <div class="post-list">
+        {
+            posts.map((post) => (
+                <div class="post-row">
+                    <a class="post-link" href={`/blog/${post.slug}`} >
+                        {post.data.title}
+                    </a>
+                    -
+                    <span class="post-date">
+                        {new Date(post.data.date).toISOString().split("T")[0]}
+                    </span>
+                </div>
+            ))
+        }
+    </div>
+</Layout>

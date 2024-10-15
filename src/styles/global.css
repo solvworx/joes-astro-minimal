@@ -1,0 +1,41 @@
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    text-align: center;
+    font-style: italic; 
+    margin-top: auto;
+}
+
+.post-head {
+    display: flex;
+    justify-content: space-between;
+}
+
+.post-title {
+    font-size: larger;
+    font-weight: bold;
+    color: grey;
+}
+
+.post-date {
+    color: grey;
+}
+
+.post-topics {
+    font-size: smaller;
+    margin: 4px;
+    color: grey;
+}
+
+.post-list {}
+
+.post-row {}
+
+.topic-list {}
+
+.topic-row {}

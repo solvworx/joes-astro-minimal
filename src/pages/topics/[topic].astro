@@ -1,0 +1,37 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/MainLayout.astro";
+import { BRAND } from "../../branding";
+
+const title = BRAND + " - Blog";
+
+export async function getStaticPaths() {
+    const posts = (await getCollection("posts"));
+    const topics = [...new Set(posts.flatMap((post) => post.data.topics))];
+	return topics.map((topic) => ({
+		params: { topic }
+	}));
+}
+
+const { topic } = Astro.params;
+const onTopic = (await getCollection("posts")).filter((post) => (topic && post.data.topics.includes(topic)));
+---
+
+<Layout title={title}>
+    <h2>#{topic?.toLowerCase()}</h2>
+    <div class="post-list">
+        {
+            onTopic.map((post) => (
+                <div class="post-row">
+                    <a class="post-link" href={`/blog/${post.slug}`} >
+                        {post.data.title}
+                    </a>
+                    -
+                    <span class="post-date">
+                        {new Date(post.data.date).toISOString().split("T")[0]}
+                    </span>
+                </div>
+            ))
+        }
+    </div>
+</Layout>

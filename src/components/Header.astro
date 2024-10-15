@@ -1,0 +1,25 @@
+---
+import "../styles/hamburger.css";
+import { BRAND } from "../branding";
+---
+
+<header>
+    <nav>
+        <ul>
+            <li><h4>{BRAND}</h4></li>
+        </ul>
+
+        <input type="checkbox" id="menu-check">
+
+        <ul id="menu-list">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/topics">Topics</a></li>
+        </ul>
+
+        <label for="menu-check" id="menu-icon">
+          <span style="font-size: 2em">&#x2261;</span>
+        </label>
+    </nav>
+</header>
