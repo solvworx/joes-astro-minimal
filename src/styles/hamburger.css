@@ -29,7 +29,7 @@
     left: -100%;
     margin-left: 0;
     text-align: center;
-    background: #333333;  /* adjustable */
+    background: #333333;    /* adjustable */
     top: 90px;              /* adjustable */
     transition: all .5s;    /* adjustable */
   }
@@ -41,5 +41,22 @@
   #menu-check:checked ~ #menu-list {
     left: 0;
   }
+
+  #menu-open {
+    display: block;
+  }
+
+  #menu-close {
+    display: none;
+  }
+
+  #menu-check:checked ~ #menu-icon #menu-open {
+    display: none;
+  }
+
+  #menu-check:checked ~ #menu-icon #menu-close {
+    display: block;
+  }
+
 }
   
